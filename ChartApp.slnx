@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ChartApp/ChartApp.csproj" />
+  <Project Path="SampleApplication/SampleApplicationChartApp.csproj" />
 </Solution>
