@@ -1,6 +1,6 @@
 using System.Windows.Media;
 
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     /// <summary>Specifies whether an annotation is drawn horizontally or vertically.</summary>
     public enum AnnotationOrientation

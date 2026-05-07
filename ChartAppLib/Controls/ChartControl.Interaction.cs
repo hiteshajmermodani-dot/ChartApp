@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     public partial class ChartControl
     {

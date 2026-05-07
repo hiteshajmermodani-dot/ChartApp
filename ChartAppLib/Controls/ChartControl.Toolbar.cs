@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     public partial class ChartControl
     {

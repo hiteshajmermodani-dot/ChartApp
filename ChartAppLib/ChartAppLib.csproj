@@ -8,7 +8,7 @@
  <LangVersion>preview</LangVersion>
 
     <!-- NuGet Package Metadata -->
-    <PackageId>ChartApp.WPF</PackageId>
+    <PackageId>ChartAppLib.WPF</PackageId>
     <Version>1.0.0</Version>
     <Title>ChartApp WPF Chart Control Library</Title>
     <Authors>ChartApp Contributors</Authors>

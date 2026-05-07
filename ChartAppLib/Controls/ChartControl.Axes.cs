@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using ChartApp.Models;
+using ChartAppLib.Models;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     public partial class ChartControl
     {

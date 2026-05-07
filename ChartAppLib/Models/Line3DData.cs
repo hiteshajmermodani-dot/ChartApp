@@ -1,6 +1,6 @@
 using System.Windows.Media;
 
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     public class Line3DSeries
     {

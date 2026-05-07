@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChartApp\ChartApp.csproj" />
+    <ProjectReference Include="..\ChartAppLib\ChartAppLib.csproj" />
   </ItemGroup>
 
 </Project>

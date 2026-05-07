@@ -5,7 +5,6 @@
 /.vs
 /obj
 /SampleApplication/obj
-/bin/Debug/net9.0-windows
-/ChartApp/bin/Debug/net9.0-windows
 /ChartApp/obj
-/SampleApplication/bin/Debug/net9.0-windows
+/SampleApplication/bin
+/ChartAppLib/bin

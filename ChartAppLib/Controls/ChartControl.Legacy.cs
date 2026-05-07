@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     public partial class ChartControl
     {

@@ -1,6 +1,6 @@
 using System.Windows.Media;
 
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     /// <summary>Determines how axis tick labels are generated.</summary>
     public enum AxisType

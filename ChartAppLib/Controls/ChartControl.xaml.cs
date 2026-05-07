@@ -6,10 +6,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ChartApp.Models;
-using ChartApp.ViewportManagers;
+using ChartAppLib.Models;
+using ChartAppLib.ViewportManagers;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     /// <summary>Custom WPF chart control supporting multiple chart types, multi-axis, zoom, pan, and annotations.</summary>
     public partial class ChartControl : UserControl

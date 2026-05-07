@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using System.Windows.Media;
-using ChartApp.Helpers;
-using ChartApp.Models;
+using ChartAppLib.Helpers;
+using ChartAppLib.Models;
 
 namespace SampleApplicationChartApp.ViewModels
 {

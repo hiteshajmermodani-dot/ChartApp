@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     public class TrackerData : INotifyPropertyChanged
     {

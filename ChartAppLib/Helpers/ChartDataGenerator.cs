@@ -1,4 +1,4 @@
-namespace ChartApp.Helpers
+namespace ChartAppLib.Helpers
 {
     /// <summary>Static helpers for generating common test and demo data arrays.</summary>
     public static class ChartDataGenerator
@@ -109,8 +109,8 @@ namespace ChartApp.Helpers
         }
 
         /// <summary>Returns OA-date X values spaced by <paramref name="interval"/> starting from <paramref name="start"/>.
-        /// Pass to a <see cref="ChartApp.Models.DataSeries.XValues"/> alongside
-        /// <c>AxisType.DateTime</c> on the <see cref="ChartApp.Models.XAxisDefinition"/>.</summary>
+        /// Pass to a <see cref="ChartAppLib.Models.DataSeries.XValues"/> alongside
+        /// <c>AxisType.DateTime</c> on the <see cref="ChartAppLib.Models.XAxisDefinition"/>.</summary>
         public static double[] GetDateTimeXData(DateTime start, TimeSpan interval, int pointCount)
         {
             var data = new double[pointCount];

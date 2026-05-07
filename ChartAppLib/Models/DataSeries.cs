@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     /// <summary>Represents a single data series with X, Y, and optional Z values.</summary>
     public class DataSeries

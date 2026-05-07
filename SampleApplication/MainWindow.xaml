@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls1="clr-namespace:ChartApp.Controls;assembly=ChartApp"
+        xmlns:controls="clr-namespace:ChartAppLib.Controls;assembly=ChartAppLib"
         xmlns:viewModels="clr-namespace:SampleApplicationChartApp.ViewModels"        
         xmlns:sampleApplicationChartApp="clr-namespace:SampleApplicationChartApp"
         mc:Ignorable="d"
@@ -103,11 +103,11 @@
         </StackPanel>
 
         <!-- Chart Toolbar — placed separately from the chart control -->
-        <controls1:ChartToolbar Grid.Row="2"
+        <controls:ChartToolbar Grid.Row="2"
                                    TargetChart="{Binding ElementName=ChartControl}" />
 
         <Grid Grid.Row="3">
-            <controls1:ChartControl x:Name="ChartControl"
+            <controls:ChartControl x:Name="ChartControl"
                                        Margin="5" 
                                        Series="{Binding ChartData}"
                                        XAxes="{Binding XAxes}"
@@ -122,10 +122,10 @@
                                        ZoomRectangleStroke="#5599FF"
                                        ZoomRectangleStrokeThickness="1.5"
                                        ZoomRectangleStrokeDashArray="6,3">
-                <controls1:ChartControl.TrackerTooltipTemplate>
+                <controls:ChartControl.TrackerTooltipTemplate>
                     <DataTemplate>
                         <!-- Custom dark-themed tracker tooltip template.
-                             DataContext is a ChartApp.Models.TrackerData instance.
+                             DataContext is a ChartAppLib.Models.TrackerData instance.
                              Bind to XText for the X label and Items for per-series rows. -->
                         <Border Background="#E6141420"
                                 BorderBrush="#5599FF"
@@ -156,8 +156,8 @@
                             </StackPanel>
                         </Border>
                     </DataTemplate>
-                </controls1:ChartControl.TrackerTooltipTemplate>
-            </controls1:ChartControl>
+                </controls:ChartControl.TrackerTooltipTemplate>
+            </controls:ChartControl>
 
                                                                    <!-- Loading overlay with circular progress indicator -->
                                                                    <Border Background="#80FFFFFF"

@@ -1,4 +1,4 @@
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     /// <summary>
     /// Holds Z-value grid data for a 3D surface plot.

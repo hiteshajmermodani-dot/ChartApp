@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ChartApp.Controls
+namespace ChartAppLib.Controls
 {
     /// <summary>Toolbar control providing toggle buttons and selectors for chart features.</summary>
     public partial class ChartToolbar : UserControl
@@ -251,7 +251,7 @@ namespace ChartApp.Controls
         private void ApplyTheme(string themePath)
         {
             var dict = new ResourceDictionary
-                       { Source = new Uri($"pack://application:,,,/ChartApp;component/{themePath}", UriKind.Absolute) };
+                       { Source = new Uri($"pack://application:,,,/ChartAppLib;component/{themePath}", UriKind.Absolute) };
 
             // Remove any previous theme dictionaries
             for (var i = Application.Current.Resources.MergedDictionaries.Count - 1; i >= 0; i--)

@@ -1,4 +1,4 @@
-namespace ChartApp.Models
+namespace ChartAppLib.Models
 {
     public enum ChartType
     {

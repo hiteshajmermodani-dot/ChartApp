@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace ChartApp.ViewportManagers
+namespace ChartAppLib.ViewportManagers
 {
     public abstract class ChartViewportManager
     {
