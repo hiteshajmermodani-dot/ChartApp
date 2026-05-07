@@ -346,10 +346,10 @@ See [LICENSE](LICENSE) for details.
 
 ## 📦 NuGet Package
 
-Published on **[NuGet.org](https://www.nuget.org/packages/ChartApp.WPF/)**
+Published on **[NuGet.org](https://www.nuget.org/packages/ChartAppLib/)**
 
 ```bash
-Install-Package ChartApp.WPF
+Install-Package ChartAppLib
 ```
 
 ## 🎓 Learning Resources
@@ -362,7 +362,7 @@ Install-Package ChartApp.WPF
 ## 🗂️ Project Structure
 
 ```
-ChartApp/
+ChartAppLib/
 ├── Controls/              # Chart control components
 ├── Models/                # Data models (DataSeries, Annotations)
 ├── Helpers/               # ChartDataGenerator utility class
@@ -379,23 +379,12 @@ SampleApplication/        # Working examples of all features
 
 ## 🎯 Roadmap
 
-**Version 1.1.0** (Q2 2025)
+**Version 1.1.0** (Q3 2026)
 - [ ] Stacked bar charts
 - [ ] Pie/Donut charts
 - [ ] OHLC/Candlestick
 - [ ] Heatmaps
 - [ ] Data export (CSV/Excel)
-
-**Version 1.2.0** (Q3 2025)
-- [ ] Touch gesture support
-- [ ] Advanced filtering UI
-- [ ] Custom color schemes
-- [ ] RTL support
-
-**Version 2.0.0** (Q4 2025)
-- [ ] Cross-platform (.NET MAUI)
-- [ ] Web component (Blazor)
-- [ ] ML visualization tools
 
 ## 💡 Tips & Best Practices
 
