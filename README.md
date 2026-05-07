@@ -125,9 +125,7 @@ public class ChartViewModel
 | Document | Purpose |
 |----------|---------|
 | [NUGET_README.md](ChartApp/NUGET_README.md) | NuGet package documentation |
-| [NUGET_PACKAGE_GUIDE.md](NUGET_PACKAGE_GUIDE.md) | Building and publishing guide |
 | [API_DOCUMENTATION.md](ChartApp/API_DOCUMENTATION.md) | Detailed API reference |
-| [CHANGELOG.md](CHANGELOG.md) | Version history and updates |
 | [LICENSE](LICENSE) | MIT License (free for all developers) |
 
 ## 🔧 Sample Application
