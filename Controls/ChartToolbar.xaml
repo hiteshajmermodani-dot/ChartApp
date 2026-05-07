@@ -1,0 +1,158 @@
+<UserControl x:Class="ChartApp.Controls.ChartToolbar"
+             x:Name="Root"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+
+    <Border BorderBrush="#CCCCCC"
+            BorderThickness="0,0,0,1"
+            Background="#F5F5F5"
+            Padding="4,2">
+        <StackPanel Orientation="Horizontal">
+            <ToggleButton x:Name="PART_ToggleTracker"
+                          Content="&#x1F4CD; Tracker"
+                          IsChecked="True"
+                          Click="ToggleTracker_Click"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Show/hide tracker tooltip"
+                          FontSize="11"
+                          Visibility="{Binding ShowTrackerButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ToggleButton x:Name="PART_ToggleLegend"
+                          Content="&#x1F4CA; Legend"
+                          IsChecked="True"
+                          Click="ToggleLegend_Click"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Show/hide legend"
+                          FontSize="11"
+                          Visibility="{Binding ShowLegendButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ToggleButton x:Name="PART_ToggleLabels"
+                          Content="&#x1F3F7;&#xFE0F; Labels"
+                          IsChecked="True"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Show/hide X and Y axis labels"
+                          FontSize="11"
+                          Click="ToggleLabels_Click"
+                          Visibility="{Binding ShowLabelsButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ToggleButton x:Name="PART_ToggleMajorGrid"
+                          Content="&#x25A6; Major Grid"
+                          IsChecked="True"
+                          Click="ToggleMajorGrid_Click"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Show/hide major grid lines"
+                          FontSize="11"
+                          Visibility="{Binding ShowMajorGridButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ToggleButton x:Name="PART_ToggleMinorGrid"
+                          Content="&#x25A4; Minor Grid"
+                          IsChecked="True"
+                          Click="ToggleMinorGrid_Click"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Show/hide minor grid lines"
+                          FontSize="11"
+                          Visibility="{Binding ShowMinorGridButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                       Margin="6,2" />
+
+            <Button x:Name="PART_ResetView"
+                    Content="&#x27F2; Reset"
+                    Click="ResetView_Click"
+                    Padding="6,2"
+                    Margin="2,0"
+                    ToolTip="Reset zoom and pan (Home)"
+                    FontSize="11"
+                    Visibility="{Binding ShowResetButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <Button x:Name="PART_Undo"
+                    Content="&#x21A9; Undo"
+                    Click="Undo_Click"
+                    Padding="6,2"
+                    Margin="2,0"
+                    ToolTip="Undo last view change (Ctrl+Z)"
+                    FontSize="11"
+                    Visibility="{Binding ShowUndoRedoButtons, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <Button x:Name="PART_Redo"
+                    Content="&#x21AA; Redo"
+                    Click="Redo_Click"
+                    Padding="6,2"
+                    Margin="2,0"
+                    ToolTip="Redo last view change (Ctrl+Y)"
+                    FontSize="11"
+                    Visibility="{Binding ShowUndoRedoButtons, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                       Margin="6,2" />
+
+            <ToggleButton x:Name="PART_ToggleLock"
+                          Content="&#x1F513; Unlocked"
+                          IsChecked="False"
+                          Click="ToggleLock_Click"
+                          Padding="6,2"
+                          Margin="2,0"
+                          ToolTip="Lock/unlock chart interaction (zoom, pan, drag)"
+                          FontSize="11"
+                          Visibility="{Binding ShowLockButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ToggleButton x:Name="PART_ToggleDoubleClickReset"
+                           Content="&#x1F5B1;&#xFE0F; DblClick Reset"
+                           IsChecked="True"
+                           Click="ToggleDoubleClickReset_Click"
+                           Padding="6,2"
+                           Margin="2,0"
+                           ToolTip="Enable/disable double-click to reset chart view"
+                           FontSize="11"
+                           Visibility="{Binding ShowDoubleClickResetButton, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                       Margin="6,2" />
+
+            <TextBlock Text="Chart Type:"
+                       VerticalAlignment="Center"
+                       Margin="4,0,4,0"
+                       FontSize="11"
+                       Visibility="{Binding ShowChartTypeSelector, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ComboBox x:Name="PART_ChartType"
+                      SelectedIndex="0"
+                      SelectionChanged="ChartType_SelectionChanged"
+                      VerticalContentAlignment="Center"
+                      Padding="6,2"
+                      Margin="2,0"
+                      ToolTip="Select chart rendering type"
+                      FontSize="11"
+                      Visibility="{Binding ShowChartTypeSelector, ElementName=Root, Converter={StaticResource BoolToVis}}">
+                <ComboBoxItem Content="📈 Line Plot" />
+                <ComboBoxItem Content="🔵 Scatter Plot" />
+                <ComboBoxItem Content="⭕ Bubble Plot" />
+                <ComboBoxItem Content="📦 Box Plot" />
+                <ComboBoxItem Content="📊 Histogram" />
+            </ComboBox>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+                       Margin="6,2" />
+
+            <TextBlock Text="Theme:"
+                       VerticalAlignment="Center"
+                       Margin="4,0,4,0"
+                       FontSize="11"
+                       Visibility="{Binding ShowThemeSelector, ElementName=Root, Converter={StaticResource BoolToVis}}" />
+            <ComboBox x:Name="PART_ThemeSelector"
+                      SelectedIndex="0"
+                      SelectionChanged="ThemeSelector_SelectionChanged"
+                      Padding="6,2"
+                      Margin="2,0"
+                      VerticalContentAlignment="Center"
+                      ToolTip="Select chart theme"
+                      FontSize="11"
+                      Width="90"
+                      Visibility="{Binding ShowThemeSelector, ElementName=Root, Converter={StaticResource BoolToVis}}">
+                <ComboBoxItem Content="Light" />
+                <ComboBoxItem Content="Dark" />
+            </ComboBox>
+        </StackPanel>
+    </Border>
+</UserControl>
