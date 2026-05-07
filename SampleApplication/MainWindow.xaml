@@ -1,0 +1,180 @@
+﻿<Window x:Class="SampleApplicationChartApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls1="clr-namespace:ChartApp.Controls;assembly=ChartApp"
+        xmlns:viewModels="clr-namespace:SampleApplicationChartApp.ViewModels"
+        xmlns:uikit="http://www.festo.com/schemas/presentation/Festo_uikit/xaml"
+        xmlns:sampleApplicationChartApp="clr-namespace:SampleApplicationChartApp"
+        mc:Ignorable="d"
+        Title="ChartSample" Height="450" Width="800" d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel, IsDesignTimeCreatable=False}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- User's own Menu Bar — bound to the same commands as the chart's internal toolbar -->
+        <Menu Grid.Row="0" FontSize="12">
+            <MenuItem Header="_Chart">
+                <MenuItem Header="📍 Toggle _Tracker"
+                          Command="{Binding ElementName=ChartControl, Path=ToggleTrackerCommand}" />
+                <MenuItem Header="📊 Toggle _Legend"
+                          Command="{Binding ElementName=ChartControl, Path=ToggleLegendCommand}" />
+                <Separator />
+                <MenuItem Header="▦ Toggle _Major Grid"
+                          Command="{Binding ElementName=ChartControl, Path=ToggleMajorGridCommand}" />
+                <MenuItem Header="▤ Toggle Mi_nor Grid"
+                          Command="{Binding ElementName=ChartControl, Path=ToggleMinorGridCommand}" />
+                <Separator />
+                <MenuItem Header="🔓 Toggle _Lock"
+                          Command="{Binding ElementName=ChartControl, Path=ToggleLockCommand}" />
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="⟲ _Reset View"
+                          Command="{Binding ElementName=ChartControl, Path=ResetViewCommand}" />
+                <MenuItem Header="↩ _Undo"
+                          Command="{Binding ElementName=ChartControl, Path=UndoCommand}"
+                          InputGestureText="Ctrl+Z" />
+                <MenuItem Header="↪ Re_do"
+                          Command="{Binding ElementName=ChartControl, Path=RedoCommand}"
+                          InputGestureText="Ctrl+Y" />
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,5">
+            <Button Content="📂 Load Line Plot"
+                    Command="{Binding LoadLinePlotCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    FontSize="13" />
+
+            <Button Content="{Binding LiveButtonText}"
+                    Command="{Binding ToggleLiveDataCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="📦 Load Box Plot"
+                    Command="{Binding LoadBoxPlotCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="📊 Load Histogram"
+                    Command="{Binding LoadHistogramCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="🔵 Load Scatter Plot"
+                    Command="{Binding LoadScatterPlotCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="⭕ Load Bubble Plot"
+                    Command="{Binding LoadBubblePlotCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="🌐 Load 3D Surface"
+                    Command="{Binding LoadSurface3DCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+
+            <Button Content="🔗 Load 3D Line"
+                    Command="{Binding LoadLine3DCommand}"
+                    HorizontalAlignment="Left"
+                    Padding="10,5"
+                    Margin="10,0,0,0"
+                    FontSize="13" />
+        </StackPanel>
+
+        <!-- Chart Toolbar — placed separately from the chart control -->
+        <controls1:ChartToolbar Grid.Row="2"
+                                   TargetChart="{Binding ElementName=ChartControl}" />
+
+        <Grid Grid.Row="3">
+            <controls1:ChartControl x:Name="ChartControl"
+                                       Margin="5" 
+                                       Series="{Binding ChartData}"
+                                       XAxes="{Binding XAxes}"
+                                       YAxes="{Binding YAxes}"
+                                       Annotations="{Binding Annotations}"
+                                       ChartType="{Binding SelectedChartType}"
+                                       BoxPlotSeries="{Binding BoxPlotSeries}"
+                                       Surface3DSeries="{Binding Surface3DSeries}"
+                                       Line3DData="{Binding Line3DData}"
+                                       ShowTrackerLine="True"
+                                       ZoomRectangleFill="#265599FF"
+                                       ZoomRectangleStroke="#5599FF"
+                                       ZoomRectangleStrokeThickness="1.5"
+                                       ZoomRectangleStrokeDashArray="6,3">
+                <controls1:ChartControl.TrackerTooltipTemplate>
+                    <DataTemplate>
+                        <!-- Custom dark-themed tracker tooltip template.
+                             DataContext is a ChartApp.Models.TrackerData instance.
+                             Bind to XText for the X label and Items for per-series rows. -->
+                        <Border Background="#E6141420"
+                                BorderBrush="#5599FF"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Padding="10,7,10,7">
+                            <StackPanel>
+                                <TextBlock Text="{Binding XText}"
+                                           Foreground="#88BBFF"
+                                           FontSize="11"
+                                           FontWeight="Bold"
+                                           Margin="0,0,0,5" />
+                                <ItemsControl ItemsSource="{Binding Items}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                                <Rectangle Width="10" Height="10"
+                                                           Fill="{Binding Stroke}"
+                                                           RadiusX="2" RadiusY="2"
+                                                           Margin="0,2,7,0" />
+                                                <TextBlock Text="{Binding FormattedValue}"
+                                                           Foreground="White"
+                                                           FontSize="11" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </controls1:ChartControl.TrackerTooltipTemplate>
+            </controls1:ChartControl>
+
+                                                                   <!-- Loading overlay with circular progress indicator -->
+                                                                   <Border Background="#80FFFFFF"
+                    Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ProgressBar IsIndeterminate="True"
+                                 Width="40" Height="40"
+                                 Style="{StaticResource CircularProgressStyle}"
+                                 Margin="0,0,0,10" />
+                    <TextBlock Text="Loading chart data…"
+                               FontSize="13"
+                               Foreground="#555"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+
+</Window>
