@@ -4,8 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls1="clr-namespace:ChartApp.Controls;assembly=ChartApp"
-        xmlns:viewModels="clr-namespace:SampleApplicationChartApp.ViewModels"
-        xmlns:uikit="http://www.festo.com/schemas/presentation/Festo_uikit/xaml"
+        xmlns:viewModels="clr-namespace:SampleApplicationChartApp.ViewModels"        
         xmlns:sampleApplicationChartApp="clr-namespace:SampleApplicationChartApp"
         mc:Ignorable="d"
         Title="ChartSample" Height="450" Width="800" d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel, IsDesignTimeCreatable=False}">
