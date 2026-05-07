@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
+ <LangVersion>preview</LangVersion>
 
     <!-- NuGet Package Metadata -->
     <PackageId>ChartApp.WPF</PackageId>
@@ -17,7 +18,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageCopyright>© 2026 ChartApp Contributors. All rights reserved.</PackageCopyright>
+    <PackageCopyright>Â© 2026 ChartApp Contributors. All rights reserved.</PackageCopyright>
     <PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
     <PackageReleaseNotesFile>RELEASE_NOTES.md</PackageReleaseNotesFile>
     <PackageTags>wpf;chart;charting;visualization;scatter;line;bubble;3d;plotting</PackageTags>
