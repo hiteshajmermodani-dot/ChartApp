@@ -45,4 +45,9 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="NUGET_README.md" Pack="true" PackagePath="\" />
+    <None Include="RELEASE_NOTES.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
 </Project>
