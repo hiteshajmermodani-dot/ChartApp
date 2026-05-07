@@ -272,17 +272,12 @@ ChartSeries = new()
 ## ⚙️ Building the NuGet Package
 
 ```powershell
-# Method 1: PowerShell Script (Recommended)
-.\Build-NuGetPackage.ps1 -Version "1.0.0"
+# Method 1: dotnet CLI
+dotnet pack ChartAppLib/ChartAppLib.csproj -c Release -o ./nupkg --include-symbols
 
-# Method 2: dotnet CLI
-dotnet pack ChartApp/ChartApp.csproj -c Release -o ./nupkg --include-symbols
-
-# Method 3: Visual Studio
-# Right-click ChartApp project → Pack
+# Method 2: Visual Studio
+# Right-click ChartAppLib project → Pack
 ```
-
-See [NUGET_PACKAGE_GUIDE.md](NUGET_PACKAGE_GUIDE.md) for detailed instructions.
 
 ## 📊 Performance Benchmarks
 
