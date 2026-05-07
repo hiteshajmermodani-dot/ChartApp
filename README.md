@@ -1,10 +1,10 @@
 # ChartApp - WPF Chart Control Library
 
-![.NET](https://img.shields.io/badge/.NET-10.0-blue)
+![.NET](https://img.shields.io/badge/.NET-9.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![NuGet](https://img.shields.io/badge/NuGet-ChartApp.WPF-blue)
 
-A powerful, feature-rich **WPF charting library** for .NET 10 developers. Create stunning interactive charts with smooth animations, real-time data streaming, and advanced visualization capabilities.
+A powerful, feature-rich **WPF charting library** for .NET 9 and above developers. Create stunning interactive charts with smooth animations, real-time data streaming, and advanced visualization capabilities.
 
 ## 🎯 Features Overview
 
