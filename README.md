@@ -6,6 +6,9 @@
 
 A powerful, feature-rich **WPF charting library** for .NET 9 and above developers. Create stunning interactive charts with smooth animations, real-time data streaming, and advanced visualization capabilities.
 
+<img width="1917" height="992" alt="Screenshot 2026-05-04 231746" src="https://github.com/user-attachments/assets/8586cc2c-56eb-4fad-9247-03b0104545fe" />
+
+
 ## 🎯 Features Overview
 
 ### 📊 7 Chart Types
