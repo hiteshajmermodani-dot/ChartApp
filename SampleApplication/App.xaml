@@ -4,7 +4,162 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Converters -->
             <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+
+            <!-- Color Palette -->
+            <Color x:Key="PrimaryColor">#2563EB</Color>
+            <Color x:Key="PrimaryHoverColor">#1D4ED8</Color>
+            <Color x:Key="AccentColor">#10B981</Color>
+            <Color x:Key="AccentHoverColor">#059669</Color>
+            <Color x:Key="DangerColor">#EF4444</Color>
+            <Color x:Key="DangerHoverColor">#DC2626</Color>
+            <Color x:Key="BackgroundColor">#F9FAFB</Color>
+            <Color x:Key="SurfaceColor">#FFFFFF</Color>
+            <Color x:Key="BorderColor">#E5E7EB</Color>
+            <Color x:Key="TextColor">#111827</Color>
+
+            <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+            <SolidColorBrush x:Key="PrimaryHoverBrush" Color="{StaticResource PrimaryHoverColor}" />
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+            <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}" />
+            <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}" />
+            <SolidColorBrush x:Key="DangerHoverBrush" Color="{StaticResource DangerHoverColor}" />
+            <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
+            <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+            <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
+            <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
+
+            <!-- Modern Button Style -->
+            <Style x:Key="ModernButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Padding" Value="12,8" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="Transparent">
+                                <Border x:Name="BackgroundBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        CornerRadius="6"
+                                        Padding="{TemplateBinding Padding}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="4" ShadowDepth="1" Opacity="0.15" />
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="BackgroundBorder"
+                                                               Storyboard.TargetProperty="Background.Color"
+                                                               To="{StaticResource PrimaryHoverColor}"
+                                                               Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetName="BackgroundBorder"
+                                                                Storyboard.TargetProperty="(Border.Effect).(DropShadowEffect.BlurRadius)"
+                                                                To="8"
+                                                                Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="BackgroundBorder"
+                                                               Storyboard.TargetProperty="Background.Color"
+                                                               To="{StaticResource PrimaryColor}"
+                                                               Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetName="BackgroundBorder"
+                                                                Storyboard.TargetProperty="(Border.Effect).(DropShadowEffect.BlurRadius)"
+                                                                To="4"
+                                                                Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="BackgroundBorder" Property="Opacity" Value="0.9" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="BackgroundBorder" Property="Opacity" Value="0.5" />
+                                    <Setter Property="Foreground" Value="#999999" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Accent Button Style (for Live Data toggle) -->
+            <Style x:Key="AccentButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+                <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Background="Transparent">
+                                <Border x:Name="BackgroundBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        CornerRadius="6"
+                                        Padding="{TemplateBinding Padding}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="4" ShadowDepth="1" Opacity="0.15" />
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="BackgroundBorder"
+                                                               Storyboard.TargetProperty="Background.Color"
+                                                               To="{StaticResource AccentHoverColor}"
+                                                               Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetName="BackgroundBorder"
+                                                                Storyboard.TargetProperty="(Border.Effect).(DropShadowEffect.BlurRadius)"
+                                                                To="8"
+                                                                Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Modern Menu Style -->
+            <Style x:Key="ModernMenuItemStyle" TargetType="MenuItem">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Padding" Value="8,6" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter Content="{TemplateBinding Header}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E0E7FF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <!-- Circular dotted spinning progress style -->
             <Style x:Key="CircularProgressStyle" TargetType="ProgressBar">
@@ -29,14 +184,14 @@
                                         </EventTrigger>
                                     </Canvas.Triggers>
                                     <!-- 8 dots in a circle with fading opacity -->
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="17.5" Canvas.Top="0" Opacity="1.0"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="28.5" Canvas.Top="4.5" Opacity="0.875"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="33" Canvas.Top="17.5" Opacity="0.75"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="28.5" Canvas.Top="30.5" Opacity="0.625"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="17.5" Canvas.Top="35" Opacity="0.5"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="4.5" Canvas.Top="30.5" Opacity="0.375"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="0" Canvas.Top="17.5" Opacity="0.25"/>
-                                    <Ellipse Width="5" Height="5" Fill="#FF555555" Canvas.Left="4.5" Canvas.Top="4.5" Opacity="0.125"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="17.5" Canvas.Top="0" Opacity="1.0"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="28.5" Canvas.Top="4.5" Opacity="0.875"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="33" Canvas.Top="17.5" Opacity="0.75"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="28.5" Canvas.Top="30.5" Opacity="0.625"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="17.5" Canvas.Top="35" Opacity="0.5"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="4.5" Canvas.Top="30.5" Opacity="0.375"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="0" Canvas.Top="17.5" Opacity="0.25"/>
+                                    <Ellipse Width="5" Height="5" Fill="#2563EB" Canvas.Left="4.5" Canvas.Top="4.5" Opacity="0.125"/>
                                 </Canvas>
                             </Viewbox>
                         </ControlTemplate>

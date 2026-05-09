@@ -37,12 +37,12 @@ A powerful, feature-rich WPF charting library for .NET 10 applications with supp
 
 ### Via NuGet Package Manager
 ```
-Install-Package ChartApp.WPF
+Install-Package ChartAppLib
 ```
 
 ### Via .NET CLI
 ```
-dotnet add package ChartApp.WPF
+dotnet add package ChartAppLib
 ```
 
 ## Quick Start

@@ -7,7 +7,9 @@
         xmlns:viewModels="clr-namespace:SampleApplicationChartApp.ViewModels"        
         xmlns:sampleApplicationChartApp="clr-namespace:SampleApplicationChartApp"
         mc:Ignorable="d"
-        Title="ChartSample" Height="450" Width="800" d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel, IsDesignTimeCreatable=False}">
+        Title="ChartSample" Height="800" Width="1200" 
+        Background="{StaticResource BackgroundBrush}"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel, IsDesignTimeCreatable=False}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,113 +17,185 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- User's own Menu Bar — bound to the same commands as the chart's internal toolbar -->
-        <Menu Grid.Row="0" FontSize="12">
-            <MenuItem Header="_Chart">
-                <MenuItem Header="📍 Toggle _Tracker"
-                          Command="{Binding ElementName=ChartControl, Path=ToggleTrackerCommand}" />
-                <MenuItem Header="📊 Toggle _Legend"
-                          Command="{Binding ElementName=ChartControl, Path=ToggleLegendCommand}" />
-                <Separator />
-                <MenuItem Header="▦ Toggle _Major Grid"
-                          Command="{Binding ElementName=ChartControl, Path=ToggleMajorGridCommand}" />
-                <MenuItem Header="▤ Toggle Mi_nor Grid"
-                          Command="{Binding ElementName=ChartControl, Path=ToggleMinorGridCommand}" />
-                <Separator />
-                <MenuItem Header="🔓 Toggle _Lock"
-                          Command="{Binding ElementName=ChartControl, Path=ToggleLockCommand}" />
-            </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="⟲ _Reset View"
-                          Command="{Binding ElementName=ChartControl, Path=ResetViewCommand}" />
-                <MenuItem Header="↩ _Undo"
-                          Command="{Binding ElementName=ChartControl, Path=UndoCommand}"
-                          InputGestureText="Ctrl+Z" />
-                <MenuItem Header="↪ Re_do"
-                          Command="{Binding ElementName=ChartControl, Path=RedoCommand}"
-                          InputGestureText="Ctrl+Y" />
-            </MenuItem>
-        </Menu>
+        <!-- Menu Bar with modern styling -->
+        <Border Grid.Row="0" Background="{StaticResource SurfaceBrush}" 
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                Padding="0">
+            <Menu FontSize="12" Background="Transparent">
+                <MenuItem Header="_Chart" Padding="8,6" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold">
+                    <MenuItem Header="Toggle _Tracker"
+                  Command="{Binding ElementName=ChartControl, Path=ToggleTrackerCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="📍" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Toggle _Legend"
+                  Command="{Binding ElementName=ChartControl, Path=ToggleLegendCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="📊" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Toggle _Major Grid"
+                  Command="{Binding ElementName=ChartControl, Path=ToggleMajorGridCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="▦" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Toggle Mi_nor Grid"
+                  Command="{Binding ElementName=ChartControl, Path=ToggleMinorGridCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="▤" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Toggle _Lock"
+                  Command="{Binding ElementName=ChartControl, Path=ToggleLockCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="🔓" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,5">
-            <Button Content="📂 Load Line Plot"
-                    Command="{Binding LoadLinePlotCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    FontSize="13" />
+                <MenuItem Header="_View" Padding="8,6" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold">
+                    <MenuItem Header="_Reset View"
+                  Command="{Binding ElementName=ChartControl, Path=ResetViewCommand}">
+                        <MenuItem.Icon>
+                            <TextBlock Text="⟲" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Undo"
+                  Command="{Binding ElementName=ChartControl, Path=UndoCommand}"
+                  InputGestureText="Ctrl+Z">
+                        <MenuItem.Icon>
+                            <TextBlock Text="↩" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Re_do"
+                  Command="{Binding ElementName=ChartControl, Path=RedoCommand}"
+                  InputGestureText="Ctrl+Y">
+                        <MenuItem.Icon>
+                            <TextBlock Text="↪" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
 
-            <Button Content="{Binding LiveButtonText}"
-                    Command="{Binding ToggleLiveDataCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+                <MenuItem Header="_Help" Padding="8,6" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold">
+                    <MenuItem Header="About">
+                        <MenuItem.Icon>
+                            <TextBlock Text="ℹ️" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Tutorial">
+                        <MenuItem.Icon>
+                            <TextBlock Text="📘" FontSize="14"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Border>
 
-            <Button Content="📦 Load Box Plot"
-                    Command="{Binding LoadBoxPlotCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+        <!-- Button Toolbar with grouped sections -->
+        <Border Grid.Row="1" Background="{StaticResource SurfaceBrush}" 
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                Padding="12">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Horizontal">
+                    <!-- Chart Type Selection Group -->
+                    <TextBlock Text="Chart Types:" VerticalAlignment="Center" Foreground="{StaticResource TextBrush}" 
+                               FontWeight="SemiBold" Margin="0,0,12,0" />
 
-            <Button Content="📊 Load Histogram"
-                    Command="{Binding LoadHistogramCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+                    <Button Content="📈 Line Plot"
+                            Command="{Binding LoadLinePlotCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load line plot with multiple series"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-            <Button Content="🔵 Load Scatter Plot"
-                    Command="{Binding LoadScatterPlotCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+                    <Button Content="📦 Box Plot"
+                            Command="{Binding LoadBoxPlotCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load box plot for statistical analysis"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-            <Button Content="⭕ Load Bubble Plot"
-                    Command="{Binding LoadBubblePlotCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+                    <Button Content="📊 Histogram"
+                            Command="{Binding LoadHistogramCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load histogram distribution"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-            <Button Content="🌐 Load 3D Surface"
-                    Command="{Binding LoadSurface3DCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
+                    <Button Content="🔵 Scatter Plot"
+                            Command="{Binding LoadScatterPlotCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load scatter plot data"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-            <Button Content="🔗 Load 3D Line"
-                    Command="{Binding LoadLine3DCommand}"
-                    HorizontalAlignment="Left"
-                    Padding="10,5"
-                    Margin="10,0,0,0"
-                    FontSize="13" />
-        </StackPanel>
+                    <Button Content="⭕ Bubble Plot"
+                            Command="{Binding LoadBubblePlotCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load bubble chart"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-        <!-- Chart Toolbar — placed separately from the chart control -->
-        <controls:ChartToolbar Grid.Row="2"
-                                   TargetChart="{Binding ElementName=ChartControl}" />
+                    <Button Content="🌐 3D Surface"
+                            Command="{Binding LoadSurface3DCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load 3D surface plot"
+                            Padding="10,6"
+                            Margin="0,0,6,0" />
 
-        <Grid Grid.Row="3">
+                    <Button Content="🔗 3D Line"
+                            Command="{Binding LoadLine3DCommand}"
+                            Style="{StaticResource ModernButtonStyle}"
+                            ToolTip="Load 3D line chart"
+                            Padding="10,6"
+                            Margin="0,0,12,0" />
+
+                    <!-- Live Data Group -->
+                    <Separator />
+
+                    <TextBlock Text="Live Data:" VerticalAlignment="Center" Foreground="{StaticResource TextBrush}" 
+                               FontWeight="SemiBold" Margin="12,0,12,0" />
+
+                    <Button Content="{Binding LiveButtonText}"
+                            Command="{Binding ToggleLiveDataCommand}"
+                            Style="{StaticResource AccentButtonStyle}"
+                            ToolTip="Toggle live data streaming"
+                            Padding="10,6" />
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Chart Toolbar - placed separately from the chart control -->
+        <Border Grid.Row="2" Background="{StaticResource SurfaceBrush}" 
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                Padding="12">
+            <controls:ChartToolbar TargetChart="{Binding ElementName=ChartControl}" />
+        </Border>
+
+        <!-- Main Chart Area -->
+        <Grid Grid.Row="3" Background="White">
             <controls:ChartControl x:Name="ChartControl"
-                                       Margin="5" 
-                                       Series="{Binding ChartData}"
-                                       XAxes="{Binding XAxes}"
-                                       YAxes="{Binding YAxes}"
-                                       Annotations="{Binding Annotations}"
-                                       ChartType="{Binding SelectedChartType}"
-                                       BoxPlotSeries="{Binding BoxPlotSeries}"
-                                       Surface3DSeries="{Binding Surface3DSeries}"
-                                       Line3DData="{Binding Line3DData}"
-                                       ShowTrackerLine="True"
-                                       ZoomRectangleFill="#265599FF"
-                                       ZoomRectangleStroke="#5599FF"
-                                       ZoomRectangleStrokeThickness="1.5"
-                                       ZoomRectangleStrokeDashArray="6,3">
+                                   Margin="5" 
+                                   Series="{Binding ChartData}"
+                                   XAxes="{Binding XAxes}"
+                                   YAxes="{Binding YAxes}"
+                                   Annotations="{Binding Annotations}"
+                                   ChartType="{Binding SelectedChartType}"
+                                   BoxPlotSeries="{Binding BoxPlotSeries}"
+                                   Surface3DSeries="{Binding Surface3DSeries}"
+                                   Line3DData="{Binding Line3DData}"
+                                   ShowTrackerLine="True"
+                                   ZoomRectangleFill="#265599FF"
+                                   ZoomRectangleStroke="#5599FF"
+                                   ZoomRectangleStrokeThickness="1.5"
+                                   ZoomRectangleStrokeDashArray="6,3">
                 <controls:ChartControl.TrackerTooltipTemplate>
                     <DataTemplate>
                         <!-- Custom dark-themed tracker tooltip template.
@@ -159,21 +233,56 @@
                 </controls:ChartControl.TrackerTooltipTemplate>
             </controls:ChartControl>
 
-                                                                   <!-- Loading overlay with circular progress indicator -->
-                                                                   <Border Background="#80FFFFFF"
-                    Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}">
+            <!-- Loading overlay with circular progress indicator -->
+            <Border Background="#E6FFFFFF"
+                    Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}"
+                    Opacity="0.95">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ProgressBar IsIndeterminate="True"
-                                 Width="40" Height="40"
+                                 Width="50" Height="50"
                                  Style="{StaticResource CircularProgressStyle}"
-                                 Margin="0,0,0,10" />
-                    <TextBlock Text="Loading chart data…"
-                               FontSize="13"
-                               Foreground="#555"
+                                 Margin="0,0,0,15" />
+                    <TextBlock Text="Loading chart data..."
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#2563EB"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,5" />
+                    <TextBlock Text="Please wait"
+                               FontSize="12"
+                               Foreground="#666666"
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </Border>
         </Grid>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="4" Background="{StaticResource SurfaceBrush}" 
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0"
+                Padding="12,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding CurrentChartStatus, StringFormat='Chart Type: {0}'}"
+                               Foreground="{StaticResource TextBrush}"
+                               FontSize="11"
+                               Margin="0,0,20,0" />
+                    <TextBlock Text="{Binding IsLiveRunning, StringFormat='Live Data: {0}'}"
+                               Foreground="{StaticResource TextBrush}"
+                               FontSize="11" />
+                </StackPanel>
+
+                <TextBlock Grid.Column="1"
+                           Text="Tip: Use mouse to zoom, pan and interact with the chart"
+                           Foreground="#888888"
+                           FontSize="10"
+                           FontStyle="Italic" />
+            </Grid>
+        </Border>
     </Grid>
 
 </Window>

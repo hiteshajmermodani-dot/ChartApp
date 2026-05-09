@@ -20,6 +20,7 @@ namespace SampleApplicationChartApp.ViewModels
         private Random? _liveRng;
         private System.Windows.Threading.DispatcherTimer? _liveTimer;
         private ChartType _selectedChartType;
+        private string _currentChartStatus = "None";
         private ObservableCollection<XAxisDefinition>? _xAxes;
         private ObservableCollection<YAxisDefinition>? _yAxes;
 
@@ -156,6 +157,18 @@ namespace SampleApplicationChartApp.ViewModels
             set
             {
                 _selectedChartType = value;
+                OnPropertyChanged();
+                CurrentChartStatus = value.ToString();
+            }
+        }
+
+        /// <summary>Gets or sets the current chart status for display.</summary>
+        public string CurrentChartStatus
+        {
+            get => _currentChartStatus;
+            set
+            {
+                _currentChartStatus = value;
                 OnPropertyChanged();
             }
         }
