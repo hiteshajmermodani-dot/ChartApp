@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ChartAppLib" Version="1.0.0" />
+    <ProjectReference Include="..\ChartAppLib\ChartAppLib.csproj" />
   </ItemGroup>
 
 </Project>

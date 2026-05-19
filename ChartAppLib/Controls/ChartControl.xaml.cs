@@ -915,7 +915,18 @@ namespace ChartAppLib.Controls
                 return;
             }
 
-            HideSurface3D();
+            if (ChartType == ChartType.Surface3DPlot || ChartType == ChartType.Line3DPlot)
+            {
+                PART_Canvas.Visibility = Visibility.Collapsed;
+                PART_Overlay.Visibility= Visibility.Collapsed;
+                PART_Viewport3D.Visibility = Visibility.Visible;
+                PART_Viewport3D.Margin = new Thickness(75, 20, 20, 55);
+                PART_3DMouseLayer.Margin = PART_Viewport3D.Margin;
+                PART_3DMouseLayer.Visibility = Visibility.Visible;
+                return;
+            }
+
+            HideSurface3D();            
 
             var outerSize = GetOuterGridSize();
 
@@ -1767,7 +1778,7 @@ namespace ChartAppLib.Controls
             {
                 chart.InvalidateAllValuesCache();
                 chart.InvalidateAxisRangesCache();
-                chart.DrawChart();
+                chart.Dispatcher.InvokeAsync(chart.DrawChart, System.Windows.Threading.DispatcherPriority.Render);
             }
         }
 
@@ -1775,7 +1786,7 @@ namespace ChartAppLib.Controls
         {
             if (d is ChartControl chart)
             {
-                chart.DrawChart();
+                chart.Dispatcher.InvokeAsync(chart.DrawChart, System.Windows.Threading.DispatcherPriority.Render);
             }
         }
 

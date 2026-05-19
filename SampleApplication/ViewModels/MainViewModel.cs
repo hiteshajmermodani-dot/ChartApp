@@ -688,13 +688,16 @@ namespace SampleApplicationChartApp.ViewModels
             _liveRng = new Random(123);
             _liveIndex = 0;
 
+            SelectedChartType = ChartType.LinePlot;
+
             YAxes =
             [
                 new YAxisDefinition
                 {
                     Id = "Y1", Label = "Signal", ShowLabel = false,
                     Position = YAxisPosition.Left, LabelBrush = Brushes.Red,
-                    MajorTickCount = 4, ShowGridLines = true, GridLineBrush = Brushes.LightGray
+                    MajorTickCount = 4, ShowGridLines = true, GridLineBrush = Brushes.LightGray,
+                    MinValue=0, MaxValue=100
                 }
             ];
 
