@@ -9,7 +9,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>ChartAppLib</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Title>ChartApp WPF Chart Control Library</Title>
     <Authors>ChartApp Contributors</Authors>
     <Description>A comprehensive WPF charting library supporting multiple chart types including Line, Scatter, Bubble, Box Plot, Histogram, and 3D charts. Features include zoom, pan, multi-axis support, live data streaming, annotations, and interactive tracking.</Description>

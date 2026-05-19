@@ -1,6 +1,19 @@
 # ChartApp Release Notes
 
-## Version 1.0.0 (2026-01-01)
+## Version 1.0.1 (2026-05-19)
+
+### 🐞 Bug Fixes
+
+- Fixed an issue where **3D charts appeared empty** when switching from a **2D chart to a 3D chart**.
+- Improved chart rendering lifecycle to ensure **3D visualizations load correctly after chart type transitions**.
+
+### 🔧 Improvements
+
+- Enhanced chart type switching stability between **2D and 3D chart modes**.
+
+---
+
+## Version 1.0.0 (2026-05-07)
 
 ### ✨ Features
 

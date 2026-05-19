@@ -281,7 +281,7 @@ Application.Current.Resources.MergedDictionaries.Add(theme);
 
 ## System Requirements
 
-- **.NET 10.0** or later
+- **.NET 9.0** or later
 - **Windows 10** or later (WPF platform requirement)
 - **Visual Studio 2022** or later recommended
 
@@ -296,6 +296,11 @@ For bug reports, feature requests, or questions:
 - Documentation: Check inline XML comments in source code
 
 ## Changelog
+
+### Version 1.0.1
+#### Bug Fixes
+- Fixed an issue where the **3D chart rendered empty** when switching from a **2D chart to a 3D chart**.
+- Improved chart type transition handling to ensure proper rendering of 3D visualizations after changing chart modes.
 
 ### Version 1.0.0
 - Initial NuGet release
