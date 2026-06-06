@@ -21,8 +21,16 @@ ChartApp is a powerful, feature-rich WPF charting control library with support f
 ### 1. Add ChartApp to XAML
 
 ```xaml
-<Window xmlns:controls="clr-namespace:ChartApp.Controls;assembly=ChartApp"
-        xmlns:models="clr-namespace:ChartApp.Models;assembly=ChartApp">
+<Window xmlns:controls="clr-namespace:ChartAppLib.Controls;assembly=ChartAppLib"
+        xmlns:models="clr-namespace:ChartAppLib.Models;assembly=ChartAppLib">
+		
+<Window.Resources>
+    <ResourceDictionary>           
+        <ResourceDictionary.MergedDictionaries>
+           <ResourceDictionary Source="pack://application:,,,/ChartAppLib;Component/Themes/Theme.Light.xaml"/>
+        </ResourceDictionary.MergedDictionaries>              
+    </ResourceDictionary>
+</Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +38,8 @@ ChartApp is a powerful, feature-rich WPF charting control library with support f
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:ChartToolbar Grid.Row="0" TargetChart="{Binding ElementName=MyChart}" />
+        <controls:ChartToolbar Grid.Row="0" TargetChart="{Binding ElementName=MyChart}" 
+		ShowThemeSelector="False" ShowChartTypeSelector="False" ShowDoubleClickResetButton="False"/>
 
         <controls:ChartControl x:Name="MyChart"
                                Grid.Row="1"
@@ -47,7 +56,7 @@ ChartApp is a powerful, feature-rich WPF charting control library with support f
 ### 2. Populate with Data (ViewModel)
 
 ```csharp
-using ChartApp.Models;
+using ChartAppLib.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 
@@ -56,7 +65,6 @@ public class MyViewModel
     public ObservableCollection<DataSeries> ChartData { get; set; }
     public ObservableCollection<XAxisDefinition> XAxes { get; set; }
     public ObservableCollection<YAxisDefinition> YAxes { get; set; }
-    public ChartType SelectedChartType { get; set; }
 
     public MyViewModel()
     {
@@ -106,7 +114,7 @@ public class MyViewModel
             }
         };
 
-        SelectedChartType = ChartType.LinePlot;
+        //MyChart.Refresh() method can be use in code behind or in viewmodel to refresh the chart after data load
     }
 }
 ```
@@ -435,11 +443,11 @@ public enum ChartType
 
 ## ChartDataGenerator
 
-`ChartApp.Helpers.ChartDataGenerator` is a static helper class that generates `double[]` arrays for testing, demos, and prototyping.
+`ChartAppLib.Helpers.ChartDataGenerator` is a static helper class that generates `double[]` arrays for testing, demos, and prototyping.
 All methods are allocation-friendly and run safely on background threads.
 
 ```csharp
-using ChartApp.Helpers;
+using ChartAppLib.Helpers;
 ```
 
 ### Methods
@@ -462,8 +470,8 @@ using ChartApp.Helpers;
 ### Usage Example
 
 ```csharp
-using ChartApp.Helpers;
-using ChartApp.Models;
+using ChartAppLib.Helpers;
+using ChartAppLib.Models;
 using System.Windows.Media;
 
 // Generate data (safe to call on a background thread)
@@ -702,7 +710,7 @@ Available override points in `ChartViewportManager`:
 
 ## Theming
 
-ChartApp includes built-in light and dark themes switched via `ChartToolbar` or programmatically.
+ChartAppLib includes built-in light and dark themes switched via `ChartToolbar` or programmatically.
 
 ```csharp
 // Read theme-aware brushes
@@ -711,8 +719,8 @@ var gridColor = (Brush)chart.FindResource("ChartGridBrush");
 ```
 
 Theme files:
-- `ChartApp/Themes/Theme.Light.xaml`
-- `ChartApp/Themes/Theme.Dark.xaml`
+- `ChartAppLib/Themes/Theme.Light.xaml`
+- `ChartAppLib/Themes/Theme.Dark.xaml`
 
 ---
 
@@ -768,5 +776,5 @@ Theme files:
 
 ## License & Support
 
-ChartApp is provided as-is. For issues, enhancements, or questions, consult the source code documentation.
+ChartAppLib is provided as-is. For issues, enhancements, or questions, consult the source code documentation.
 

@@ -58,7 +58,7 @@ Install-Package ChartAppLib
 
 **XAML:**
 ```xaml
-<Window xmlns:chart="clr-namespace:ChartApp.Controls;assembly=ChartApp">
+<Window xmlns:chart="clr-namespace:ChartAppLib.Controls;assembly=ChartAppLib">
     <chart:ChartControl 
         ChartType="LinePlot"
         Series="{Binding ChartSeries}"
@@ -70,8 +70,8 @@ Install-Package ChartAppLib
 
 **C# ViewModel:**
 ```csharp
-using ChartApp.Models;
-using ChartApp.Helpers;
+using ChartAppLib.Models;
+using ChartAppLib.Helpers;
 
 public class ChartViewModel
 {
@@ -218,7 +218,7 @@ Built-in Light and Dark themes:
 // Switch theme at runtime
 var darkTheme = new ResourceDictionary 
 { 
-    Source = new Uri("pack://application:,,,/ChartApp;component/Themes/Theme.Dark.xaml") 
+    Source = new Uri("pack://application:,,,/ChartAppLib;component/Themes/Theme.Dark.xaml") 
 };
 Application.Current.Resources.MergedDictionaries.Clear();
 Application.Current.Resources.MergedDictionaries.Add(darkTheme);
