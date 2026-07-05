@@ -153,7 +153,7 @@ dotnet run
 
 ## 💻 System Requirements
 
-- **.NET 10.0** or later
+- **.NET 9.0** or later
 - **Windows 10** or later (WPF platform)
 - **Visual Studio 2022** recommended
 - **4GB RAM** minimum (8GB+ for large datasets)
