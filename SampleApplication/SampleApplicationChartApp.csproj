@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ChartAppLib" Version="1.0.2" />
+    <PackageReference Include="ChartAppLib" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
